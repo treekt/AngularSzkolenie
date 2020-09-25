@@ -5,7 +5,7 @@
 
 <mat-grid-list cols="3" rowHeight="2:1">
   <mat-grid-tile *ngFor="let artist of artists">
-    <mat-card class="artist-card" (click)="openArtistPage(artist.id)">
+    <mat-card class="artist-card" (click)="openArtistPage(artist)">
       <mat-card-header>
         <mat-card-title>{{artist.name}}</mat-card-title>
       </mat-card-header>

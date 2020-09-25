@@ -19,6 +19,8 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import {MatCardModule} from '@angular/material/card';
 import { ArtistPageComponent } from './core/artist-page/artist-page.component';
 import { DashboardComponent } from './core/dashboard/dashboard.component';
+import {MatListModule} from '@angular/material/list';
+import {FlexLayoutModule} from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -41,7 +43,9 @@ import { DashboardComponent } from './core/dashboard/dashboard.component';
     MatInputModule,
     FormsModule,
     MatGridListModule,
-    MatCardModule
+    MatCardModule,
+    MatListModule,
+    FlexLayoutModule
   ],
   providers: [
     {

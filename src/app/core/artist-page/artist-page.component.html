@@ -1,1 +1,14 @@
-<p>artist-page works!</p>
+<mat-grid-list cols="2" rowHeight="1000px">
+  <mat-grid-tile>
+    <mat-list>
+      <mat-list-item *ngFor="let album of albums"> {{album.name}} </mat-list-item>
+    </mat-list>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    DWA
+  </mat-grid-tile>
+</mat-grid-list>
+<!--<div fxLayout="row" fx fxLayoutAlign="space-between none">-->
+<!--  <div>sds</div>-->
+<!--  <div>sdadsd</div>-->
+<!--</div>-->

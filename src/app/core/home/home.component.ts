@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {SpotifyService} from '../../services/spotify.service';
+import {SearchService} from '../../services/search.service';
 import {Subject} from 'rxjs';
 import {debounceTime, distinctUntilChanged} from 'rxjs/operators';
-import {SearchArtist} from '../../shared/search-artist';
+import {Artist} from '../../shared/artist';
 import {Router} from '@angular/router';
 
 @Component({
@@ -13,11 +13,11 @@ import {Router} from '@angular/router';
 export class HomeComponent implements OnInit {
 
   artistQuery: string;
-  artists: SearchArtist[] = [];
+  artists: Artist[] = [];
 
   modelChanged: Subject<string> = new Subject<string>();
 
-  constructor(private spotifyService: SpotifyService, private router: Router) {
+  constructor(private spotifyService: SearchService, private router: Router) {
     this.configureDebounce();
   }
 
@@ -42,7 +42,7 @@ export class HomeComponent implements OnInit {
       .subscribe((data: any) => {
         this.artists = data.artists.items.map((item) => {
           const image = item.images.length > 0 ? item.images[0].url : '';
-          const artist: SearchArtist = item as SearchArtist;
+          const artist: Artist = item as Artist;
           artist.image = image;
           return artist;
         });
@@ -55,7 +55,9 @@ export class HomeComponent implements OnInit {
   }
 
 
-  openArtistPage(id: string) {
-    this.router.navigate([`artists/${id}`]);
+  openArtistPage(artist: Artist) {
+    this.router.navigateByUrl(`artists/${artist.id}`, {
+      state: { artist}
+    });
   }
 }

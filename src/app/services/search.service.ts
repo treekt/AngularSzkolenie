@@ -5,7 +5,7 @@ import {Observable} from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class SpotifyService {
+export class SearchService {
 
   searchEndpoint = 'https://api.spotify.com/v1/search';
 
@@ -18,6 +18,7 @@ export class SpotifyService {
     };
     return this.http.get(this.searchEndpoint, { params });
   }
+
 
 
 }
