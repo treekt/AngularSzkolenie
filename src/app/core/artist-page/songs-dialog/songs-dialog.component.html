@@ -1,0 +1,9 @@
+<h2 mat-dialog-title>Album {{album.name}}</h2>
+<mat-dialog-content class="mat-typography">
+  <mat-list>
+    <mat-list-item highlight highlightColor="silver" (click)="selectTrack(track)" *ngFor="let track of tracks"> {{track.name}} </mat-list-item>
+  </mat-list>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+</mat-dialog-actions>

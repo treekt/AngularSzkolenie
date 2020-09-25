@@ -21,6 +21,9 @@ import { ArtistPageComponent } from './core/artist-page/artist-page.component';
 import { DashboardComponent } from './core/dashboard/dashboard.component';
 import {MatListModule} from '@angular/material/list';
 import {FlexLayoutModule} from '@angular/flex-layout';
+import { HighlightDirective } from './directives/highlight.directive';
+import { SongsDialogComponent } from './core/artist-page/songs-dialog/songs-dialog.component';
+import {MatDialogModule} from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -29,7 +32,9 @@ import {FlexLayoutModule} from '@angular/flex-layout';
     AuthComponent,
     AuthProcessComponent,
     ArtistPageComponent,
-    DashboardComponent
+    DashboardComponent,
+    HighlightDirective,
+    SongsDialogComponent
   ],
   imports: [
     HttpClientModule,
@@ -45,7 +50,8 @@ import {FlexLayoutModule} from '@angular/flex-layout';
     MatGridListModule,
     MatCardModule,
     MatListModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    MatDialogModule
   ],
   providers: [
     {

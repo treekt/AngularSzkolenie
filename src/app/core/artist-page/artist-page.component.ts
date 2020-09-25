@@ -1,8 +1,12 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {Artist} from '../../shared/artist';
 import {ArtistService} from '../../services/artist.service';
 import {Album} from '../../shared/album';
+import {SongsDialogComponent} from './songs-dialog/songs-dialog.component';
+import {MatDialog} from '@angular/material/dialog';
+import {Track} from '../../shared/track';
+import {environment} from '../../../environments/environment';
 
 @Component({
   selector: 'app-artist-page',
@@ -11,11 +15,13 @@ import {Album} from '../../shared/album';
 })
 export class ArtistPageComponent implements OnInit {
 
+  selectedTrack: Track = new Track();
+
   artist: Artist = new Artist();
 
   albums: Album[] = [];
 
-  constructor(private route: ActivatedRoute, private artistService: ArtistService) {
+  constructor(private route: ActivatedRoute, private artistService: ArtistService, private dialog: MatDialog) {
   }
 
   ngOnInit(): void {
@@ -44,4 +50,13 @@ export class ArtistPageComponent implements OnInit {
       });
   }
 
+
+  openDialog(album: Album) {
+    const dialogRef = this.dialog
+      .open(SongsDialogComponent, {
+        data: album
+      });
+
+    dialogRef.afterClosed().subscribe((data) => this.selectedTrack = data);
+  }
 }
